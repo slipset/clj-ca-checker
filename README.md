@@ -1,42 +1,33 @@
 # clj-ca-checker
 
-FIXME: description
+Ever needed to check if someone has signed the Clojure contributor agreement?
 
-## Installation
+```
+$ clojure -Sdeps '{:deps {clj-ca-checker {:git/url "https://github.com/slipset/clj-ca-checker" :sha "a0ea916eb606c048227f03f2c7d02ef851075f00"}}}' -m clj-ca-checker.clj-ca-checker <github username>
+```
 
-Download from http://example.com/FIXME.
+Maybe from your OSS, so only people with a signed CA can contribute?
+Stick this in your `.circle/config.yml` as a `-run` step under `steps:`
 
-## Usage
+```
 
-FIXME: explanation
+      - run:
+          name: Clojure CA Check
+          command: |
+            git_url='"https://github.com/slipset/clj-ca-checker"'
+            sha='"a0ea916eb606c048227f03f2c7d02ef851075f00"'
+            clojure -Sdeps "{:deps {clj-ca-checker {:git/url $git_url :sha $sha}}}" \
+              -m clj-ca-checker.clj-ca-checker "$CIRCLE_PR_USERNAME"
+```
 
 Run the project directly:
 
-    $ clj -m clj-ca-checker.clj-ca-checker
+    $ clj -m clj-ca-checker.clj-ca-checker <gitub username>
 
-Run the project's tests (they'll fail until you edit them):
-
-    $ clj -A:test:runner
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2018 Erik Assum
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
