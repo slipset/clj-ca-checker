@@ -7,7 +7,7 @@ $ clojure -Sdeps '{:deps {clj-ca-checker {:git/url "https://github.com/slipset/c
      :sha "a0ea916eb606c048227f03f2c7d02ef851075f00"}}}' -m clj-ca-checker.clj-ca-checker <github username>
 ```
 
-Maybe from your OSS, so only people with a signed CA can contribute?
+Maybe from your OSS CI-pipeline, so only people with a signed CA can contribute?
 Stick this in your `.circle/config.yml` as a `-run` step under `steps:`
 
 ```
